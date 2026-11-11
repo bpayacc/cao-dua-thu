@@ -4,6 +4,12 @@
 [build]
   publish = "."
 
+# FIREBASE_PROJECT_ID không phải bí mật: nó vốn nằm công khai trong firebaseConfig phía trình duyệt
+# (config/firebaseClient.js). Bỏ qua khóa này khi quét bí mật; FIREBASE_PRIVATE_KEY và
+# FIREBASE_CLIENT_EMAIL vẫn được quét bình thường.
+[build.environment]
+  SECRETS_SCAN_OMIT_KEYS = "FIREBASE_PROJECT_ID"
+
 # Netlify Functions (ES Module, không cần build, không cần npm install).
 # Endpoint kiểm tra TikTok: /.netlify/functions/check-tiktok
 [functions]
