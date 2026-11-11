@@ -1,0 +1,36 @@
+/**
+ * pages/my-orders.css — Style riêng trang Đơn của tôi
+ */
+.orders-page { padding-block: var(--space-7) var(--space-9); }
+.orders-page__head { margin-bottom: var(--space-5); }
+
+.orders-list {
+  display: grid;
+  gap: var(--space-4);
+}
+@media (min-width: 720px) {
+  .orders-list { grid-template-columns: repeat(2, 1fr); }
+}
+
+.order-card { display: flex; flex-direction: column; gap: var(--space-2); }
+.order-card__top { display: flex; justify-content: space-between; align-items: center; }
+.order-card__code { font-family: var(--font-mono); font-weight: 700; color: var(--color-ink-600); font-size: 0.85rem; }
+.order-card h3 { font-size: 1.05rem; margin: 0; }
+.order-card__meta { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--color-ink-600); }
+.order-card__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-line);
+}
+.order-card__bottom strong { font-family: var(--font-mono); color: var(--color-primary); font-size: 1.05rem; }
+.order-card__link { font-size: 0.85rem; font-weight: 700; color: var(--color-ink-700); }
+
+/* ===== Bố cục gọn cho điện thoại ===== */
+@media (max-width: 640px) {
+  .orders-page { padding-block: var(--space-4) var(--space-6); }
+  .orders-page__head { margin-bottom: var(--space-3); }
+  .orders-list { gap: var(--space-3); }
+}

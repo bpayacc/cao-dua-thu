@@ -1,0 +1,25 @@
+/**
+ * pages/about.css — Style riêng trang Giới thiệu
+ */
+.about-page { padding-block: var(--space-5) var(--space-8); }
+.about-hero { max-width: 680px; margin-bottom: var(--space-6); }
+.about-section { margin-bottom: var(--space-7); }
+
+.about-story { display: grid; gap: var(--space-5); align-items: center; margin-bottom: var(--space-7); }
+@media (min-width: 900px) { .about-story { grid-template-columns: 1fr 1.1fr; gap: var(--space-7); } }
+.about-story__visual {
+  position: relative; display: flex; justify-content: center;
+  background: linear-gradient(160deg, var(--color-primary-100), #FFF3E6);
+  border-radius: var(--radius-lg); padding: var(--space-6) var(--space-5);
+}
+.about-story__visual img:last-child { width: min(60vw, 240px); height: auto; }
+.about-story__postmark { position: absolute; top: 16px; right: 16px; width: 90px; height: 90px; opacity: .8; transform: rotate(12deg); }
+
+/* ===== Bố cục gọn cho điện thoại ===== */
+@media (max-width: 640px) {
+  .about-page { padding-block: var(--space-3) var(--space-6); }
+  .about-hero { margin-bottom: var(--space-4); }
+  .about-section { margin-bottom: var(--space-5); }
+  .about-story { gap: var(--space-3); margin-bottom: var(--space-5); }
+  .about-story__visual { padding: var(--space-4); }
+}

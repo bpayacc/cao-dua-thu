@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+  <title>Chi tiết đơn — Cáo Đưa Thư</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/img/favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Patrick+Hand&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/assets/css/variables.css" />
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/pages/order-detail.css" />
+</head>
+<body>
+
+  <header class="site-header" id="app-header"></header>
+
+  <main class="order-detail-page container">
+
+    <div id="orderDetailContent">
+      <div id="pageBack"></div>
+      <div class="order-detail-head">
+        <div>
+          <h1>Đơn <span id="orderCode" class="mono">—</span></h1>
+          <p class="text-muted" id="orderCreatedAt">—</p>
+        </div>
+        <span class="badge" id="orderStatusBadge">—</span>
+      </div>
+
+      <div class="order-detail-layout">
+        <!-- ===== Cột trái: tiến trình, thanh toán, nội dung thư ===== -->
+        <div>
+          <div class="card detail-block">
+            <h3>Tiến trình xử lý</h3>
+            <div id="orderTimeline"></div>
+            <p class="status-note is-hidden" id="orderStatusNote"></p>
+          </div>
+
+          <div id="orderTimer" class="is-hidden"></div>
+
+          <div class="card detail-block is-hidden" id="orderPaymentCard">
+            <div id="orderPayment"></div>
+          </div>
+
+          <div class="card detail-block">
+            <h3>Nội dung thư</h3>
+            <div id="orderLetters"></div>
+          </div>
+        </div>
+
+        <!-- ===== Cột phải: thông tin + hành động ===== -->
+        <aside class="order-detail-side">
+          <div class="card detail-block">
+            <h3>Thông tin đơn</h3>
+            <dl class="detail-rows">
+              <div><dt>Gói thư</dt><dd id="orderPackage">—</dd></div>
+              <div><dt>Hình thức gửi</dt><dd id="orderSenderMode">—</dd></div>
+              <div><dt>Tên người gửi</dt><dd id="orderSenderName">—</dd></div>
+              <div><dt>TikTok người nhận</dt><dd id="orderRecipient" class="mono">—</dd></div>
+              <div><dt>Tổng tiền</dt><dd id="orderTotal" style="color:var(--color-primary-600);">—</dd></div>
+              <div><dt>Phương thức thanh toán</dt><dd id="orderPayMethod">—</dd></div>
+              <div><dt>Trạng thái thanh toán</dt><dd id="orderPayStatus">—</dd></div>
+              <div id="orderRefundRow" class="is-hidden"><dt>Hoàn tiền</dt><dd id="orderRefund">—</dd></div>
+            </dl>
+          </div>
+
+          <div id="orderCancelAction"></div>
+          <div id="orderCancelNotice" class="notice notice--info is-hidden" role="status"></div>
+        </aside>
+      </div>
+    </div>
+
+    <div class="order-not-found is-hidden" id="orderNotFound">
+      <h2>Không tìm thấy đơn hàng</h2>
+      <p class="text-muted">Đơn có thể không tồn tại hoặc bạn không có quyền xem đơn này.</p>
+      <a href="/pages/don-cua-toi.html" class="btn btn--primary">Về Đơn của tôi</a>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="app-footer"></footer>
+
+  <script type="module" src="/pages/order-detail.js"></script>
+</body>
+</html>

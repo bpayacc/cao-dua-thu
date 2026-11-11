@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+  <title>Ví của tôi — Cáo Đưa Thư</title>
+  <meta name="description" content="Ví F của bạn: số dư, nạp F, lịch sử nạp và thanh toán đơn hàng." />
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/img/favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Patrick+Hand&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/assets/css/variables.css" />
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/pages/my-orders.css" />
+  <link rel="stylesheet" href="/assets/css/pages/wallet.css" />
+</head>
+<body>
+
+  <header class="site-header" id="app-header"></header>
+
+  <main class="wallet-page container">
+    <div id="pageBack"></div>
+
+    <!-- Số dư -->
+    <section class="balance-card" aria-labelledby="balanceLabel">
+      <img class="balance-card__fox" src="/assets/img/fox-mascot.svg" alt="" width="84" height="88" aria-hidden="true" />
+      <p class="balance-card__label" id="balanceLabel">Số dư ví của bạn</p>
+      <p class="balance-card__amount" id="balanceAmount" aria-live="polite">—</p>
+      <p class="balance-card__note">1 F = 1 VNĐ · F chỉ được cộng sau khi Cáo xác nhận đã nhận tiền</p>
+      <button type="button" class="btn btn--block balance-card__btn" id="openTopupBtn">+ Nạp F</button>
+    </section>
+
+    <!-- Nạp F -->
+    <section class="card topup-panel is-hidden" id="topupPanel" aria-labelledby="topupTitle">
+      <div class="topup-panel__head">
+        <h2 id="topupTitle">Nạp F</h2>
+        <button type="button" class="link-btn" id="closeTopupBtn">Đóng</button>
+      </div>
+
+      <div id="topupForm">
+        <label class="form-label" for="topupAmount">Số F muốn nạp</label>
+        <input class="form-control" id="topupAmount" type="text" inputmode="numeric" autocomplete="off" placeholder="VD: 20000" />
+        <div class="chip-row" id="topupChips" aria-label="Chọn nhanh số F"></div>
+        <p class="form-hint" id="topupHint"></p>
+        <p class="form-error" id="topupError" role="alert"></p>
+        <button type="button" class="btn btn--primary btn--block" id="createTopupBtn">Tạo yêu cầu nạp</button>
+        <ol class="topup-steps">
+          <li>Tạo yêu cầu nạp để nhận mã giao dịch riêng.</li>
+          <li>Chuyển khoản đúng số tiền và đúng nội dung (có mã giao dịch).</li>
+          <li>Cáo kiểm tra tiền thực nhận rồi mới cộng F vào ví.</li>
+        </ol>
+      </div>
+
+      <div id="topupResult" class="is-hidden"></div>
+    </section>
+
+    <!-- Lịch sử -->
+    <div class="filter-tabs" id="walletTabs" role="tablist" aria-label="Lịch sử ví">
+      <button type="button" class="filter-tab is-active" role="tab" data-tab="topups">Lịch sử nạp</button>
+      <button type="button" class="filter-tab" role="tab" data-tab="payments">Thanh toán đơn</button>
+      <button type="button" class="filter-tab" role="tab" data-tab="ledger">Biến động ví</button>
+    </div>
+    <div id="walletList" class="wallet-list" aria-live="polite"></div>
+  </main>
+
+  <footer class="site-footer" id="app-footer"></footer>
+
+  <script type="module" src="/pages/wallet.js"></script>
+</body>
+</html>

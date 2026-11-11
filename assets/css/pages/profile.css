@@ -1,0 +1,32 @@
+/**
+ * pages/profile.css — Style riêng trang Hồ sơ
+ */
+.profile-page { padding-block: var(--space-7) var(--space-9); }
+
+.profile-summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+.profile-summary .avatar {
+  width: 64px; height: 64px;
+  font-size: 1.3rem;
+}
+.profile-summary h1 { margin-bottom: 2px; font-size: 1.4rem; }
+.profile-summary p { margin: 0; color: var(--color-ink-600); font-size: 0.9rem; }
+
+.profile-grid {
+  display: grid;
+  gap: var(--space-5);
+}
+@media (min-width: 900px) {
+  .profile-grid { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+
+.profile-grid .card h2 { font-size: 1.05rem; margin-bottom: var(--space-4); }
+
+/* ===== Bố cục gọn cho điện thoại ===== */
+@media (max-width: 640px) {
+  .profile-page { padding-block: var(--space-3) var(--space-6); }
+}

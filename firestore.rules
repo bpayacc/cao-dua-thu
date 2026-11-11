@@ -1,0 +1,76 @@
+rules_version = '2';
+// Firestore Security Rules cho Cáo Đưa Thư (có ví F).
+// Triển khai: Firebase Console → Firestore Database → Rules → dán toàn bộ nội dung → Publish
+// (hoặc `firebase deploy --only firestore:rules`).
+//
+// NGUYÊN TẮC: mọi thứ liên quan TIỀN do máy chủ (Netlify Functions + Firebase Admin SDK, bỏ qua Rules) ghi:
+//   tạo đơn, trừ F, hoàn F, huỷ đơn, tạo yêu cầu nạp, xác nhận/từ chối nạp, số dư ví, sổ cái, bộ đếm mã.
+// Trình duyệt chỉ được ĐỌC dữ liệu của chính mình (admin đọc được tất cả) và admin cập nhật trạng thái đơn.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    function isOwner(uid) { return signedIn() && request.auth.uid == uid; }
+    function isAdmin() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // ---- Hồ sơ người dùng (giữ nguyên như trước) ----
+    match /users/{uid} {
+      allow read: if isOwner(uid) || isAdmin();
+      // Tự tạo hồ sơ chỉ được với role "customer" (không tự phong admin)
+      allow create: if isOwner(uid) && request.resource.data.role == 'customer';
+      // Không được tự đổi role
+      allow update: if isOwner(uid) && request.resource.data.role == resource.data.role;
+      allow delete: if false;
+    }
+
+    // ---- Đơn gửi thư ----
+    match /orders/{orderId} {
+      allow read: if isOwner(resource.data.customerId) || isAdmin();
+
+      // KHÔNG cho trình duyệt tạo đơn: đơn (giá, trạng thái, thanh toán) chỉ do Netlify Function create-order tạo.
+      allow create: if false;
+
+      // Khách KHÔNG được sửa đơn trực tiếp (huỷ đơn / hoàn F đi qua Function cancel-order).
+      // Admin: chỉ đổi các trường quản lý, và chỉ theo đúng các bước chuyển trạng thái hợp lệ.
+      // (Quy tắc chuyển bước chạy theo trạng thái HIỆN TẠI của tài liệu nên chặn được tình huống
+      //  khách vừa huỷ + hoàn F mà admin lại ghi đè trạng thái.)
+      allow update: if isAdmin()
+        && request.resource.data.diff(resource.data).affectedKeys()
+             .hasOnly(['status', 'statusNote', 'updatedAt', 'paymentStatus', 'paidAt', 'refundStatus', 'refundNote'])
+        && (
+          request.resource.data.status == resource.data.status
+          || (resource.data.status == 'pending_payment' && request.resource.data.status in ['paid', 'cancelled'])
+          || (resource.data.status == 'paid'            && request.resource.data.status in ['processing', 'failed'])
+          || (resource.data.status == 'processing'      && request.resource.data.status in ['sent', 'failed'])
+        );
+
+      allow delete: if false;
+    }
+
+    // ---- Ví F: chỉ đọc. Số dư + sổ cái chỉ do máy chủ ghi. ----
+    match /wallets/{uid} {
+      allow read: if isOwner(uid) || isAdmin();
+      allow write: if false;
+
+      match /ledger/{entryId} {
+        allow read: if isOwner(uid) || isAdmin();
+        allow write: if false;
+      }
+    }
+
+    // ---- Yêu cầu nạp F: chỉ đọc (chủ yêu cầu + admin). Tạo/xác nhận/từ chối do máy chủ. ----
+    match /topups/{topupId} {
+      allow read: if isOwner(resource.data.userId) || isAdmin();
+      allow write: if false;
+    }
+
+    // ---- Bộ đếm mã đơn / mã nạp: chỉ máy chủ ----
+    match /counters/{id} {
+      allow read, write: if false;
+    }
+  }
+}

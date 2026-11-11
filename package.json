@@ -1,0 +1,15 @@
+{
+  "name": "cao-dua-thu",
+  "private": true,
+  "type": "module",
+  "description": "Cáo Đưa Thư — site tĩnh (HTML/CSS/JS thuần) + Netlify Functions. Không có bước build cho frontend; file này chỉ khai báo thư viện cho Netlify Functions.",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "firebase-admin": "^13.0.0"
+  },
+  "scripts": {
+    "test:server": "node tests/server/run.mjs"
+  }
+}

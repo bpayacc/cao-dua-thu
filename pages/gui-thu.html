@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+  <title>Gửi một bức thư — Cáo Đưa Thư</title>
+  <meta name="description" content="Viết thư, nhập ID TikTok người nhận, chọn gửi ẩn danh hoặc có tên — Cáo sẽ thay bạn gửi đi." />
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/img/favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Patrick+Hand&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/assets/css/variables.css" />
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/pages/send.css" />
+</head>
+<body>
+
+  <header class="site-header" id="app-header"></header>
+
+  <main class="send-page container">
+    <!-- ===== Quy trình gửi thư (5 bước) ===== -->
+    <div id="wizardView">
+      <div class="send-page__head">
+        <span class="section__eyebrow">Gửi thư</span>
+        <h1>Viết một bức thư, Cáo sẽ đưa đi</h1>
+      </div>
+
+      <div class="stepper" id="stepper" aria-label="Tiến trình gửi thư"></div>
+
+      <div class="send-layout">
+        <div class="send-main">
+          <form id="wizardForm" novalidate>
+
+            <!-- Bước 1: chọn gói -->
+            <section class="step-panel card" data-step="1" aria-labelledby="step1Title">
+              <h2 id="step1Title">Chọn gói gửi thư</h2>
+              <p class="text-muted">Giá hiển thị lấy từ bảng giá của Cáo Đưa Thư.</p>
+              <div class="choice-grid" id="packageOptions" role="radiogroup" aria-labelledby="step1Title"></div>
+            </section>
+
+            <!-- Bước 2: hình thức gửi -->
+            <section class="step-panel card" data-step="2" aria-labelledby="step2Title">
+              <h2 id="step2Title">Chọn hình thức gửi</h2>
+              <p class="text-muted">Người nhận sẽ thấy thư theo cách bạn chọn dưới đây.</p>
+              <div class="choice-grid" id="senderModeOptions" role="radiogroup" aria-labelledby="step2Title"></div>
+
+              <div class="form-group is-hidden" id="senderNameGroup">
+                <label class="form-label" for="senderName">Tên người gửi hiển thị trong thư</label>
+                <input class="form-control" type="text" id="senderName" maxlength="40" placeholder="VD: Minh, Một người bạn cũ..." autocomplete="off" />
+                <p class="form-hint">Tên này sẽ xuất hiện ở cuối thư gửi đến người nhận.</p>
+                <p class="form-error" id="senderNameError" role="alert"></p>
+              </div>
+            </section>
+
+            <!-- Bước 3: ID TikTok -->
+            <section class="step-panel card" data-step="3" aria-labelledby="step3Title">
+              <h2 id="step3Title">Tài khoản TikTok người nhận</h2>
+              <div class="form-group">
+                <label class="form-label" for="tiktokId">ID TikTok của người nhận</label>
+                <div class="input-prefix">
+                  <span aria-hidden="true">@</span>
+                  <input class="form-control" type="text" id="tiktokId" placeholder="Nhập ID TikTok của người nhận..." autocomplete="off" autocapitalize="none" spellcheck="false" inputmode="url" />
+                </div>
+                <p class="form-hint" id="tiktokPreview">Ví dụ: <span class="mono">ten_nguoi_nhan</span> hoặc <span class="mono">ten.nguoi.nhan</span> (có thể dán cả link hồ sơ TikTok).</p>
+                <p class="form-error" id="tiktokError" role="alert"></p>
+
+                <div class="tiktok-check">
+                  <button type="button" class="btn btn--outline btn--sm" id="tiktokCheckBtn">Kiểm tra tài khoản TikTok</button>
+                  <span class="form-hint">Không bắt buộc — giúp bạn đối chiếu ID trước khi đặt.</span>
+                </div>
+                <div class="tiktok-result is-hidden" id="tiktokResult" aria-live="polite"></div>
+              </div>
+
+              <details class="how-to">
+                <summary>Cách lấy ID TikTok</summary>
+                <ol>
+                  <li>Mở ứng dụng TikTok và vào <strong>trang cá nhân</strong> của người nhận.</li>
+                  <li>ID nằm ngay dưới ảnh đại diện, bắt đầu bằng dấu <strong>@</strong> (ví dụ <span class="mono">@ten_nguoi_nhan</span>).</li>
+                  <li>Hoặc bấm <strong>Chia sẻ hồ sơ → Sao chép liên kết</strong> rồi dán thẳng vào ô trên.</li>
+                </ol>
+                <p class="form-hint">Chỉ cần ID công khai — Cáo <strong>không bao giờ</strong> yêu cầu mật khẩu TikTok của bạn hay của người nhận.</p>
+              </details>
+
+              <div class="notice notice--warning" role="note">
+                <strong>Lưu ý:</strong> Hãy đảm bảo tài khoản TikTok của người nhận đang ở chế độ công khai và cho phép nhận tin nhắn từ người lạ. Cáo không chịu trách nhiệm nếu bạn cung cấp sai ID hoặc người nhận không cho phép nhận tin nhắn.
+              </div>
+              <ul class="rules-list">
+                <li>Cáo không nhận đơn gửi đến tài khoản riêng tư.</li>
+                <li>Cáo không nhận đơn gửi đến tài khoản đã tắt nhận tin nhắn từ người lạ.</li>
+                <li>Nút kiểm tra chỉ cho biết TikTok có trả về dữ liệu hồ sơ hay không. Cáo vẫn chưa xác minh được hồ sơ có đang công khai và cho phép nhận tin nhắn từ người lạ — bạn cần tự kiểm tra trước khi đặt.</li>
+              </ul>
+            </section>
+
+            <!-- Bước 4: viết thư -->
+            <section class="step-panel card" data-step="4" aria-labelledby="step4Title">
+              <h2 id="step4Title">Viết thư</h2>
+              <div class="letter-tabs is-hidden" id="letterTabs" role="tablist" aria-label="Chọn bức thư"></div>
+
+              <div class="letter-paper">
+                <img class="letter-paper__stamp" src="/assets/img/postmark.svg" alt="" aria-hidden="true" width="84" height="84" />
+                <label class="letter-paper__label" for="letterContent" id="letterLabel">Thư 1</label>
+                <textarea id="letterContent" class="letter-paper__text" rows="6" placeholder="Hãy viết những điều bạn muốn gửi đến người ấy..."></textarea>
+                <div class="letter-paper__foot">
+                  <span class="letter-counter" id="letterCounter" aria-live="polite">0/600</span>
+                </div>
+              </div>
+              <p class="form-error" id="letterError" role="alert"></p>
+
+              <div class="letter-preview" aria-live="polite">
+                <div class="letter-preview__head">
+                  <span>Xem trước tin nhắn người nhận sẽ thấy</span>
+                </div>
+                <div class="letter-preview__bubble" id="letterPreview"></div>
+              </div>
+            </section>
+
+            <!-- Bước 5: xác nhận -->
+            <section class="step-panel card" data-step="5" aria-labelledby="step5Title">
+              <h2 id="step5Title">Xác nhận thông tin</h2>
+              <p class="text-muted">Kiểm tra thật kỹ trước khi thanh toán — bạn có thể quay lại chỉnh sửa bất kỳ mục nào.</p>
+              <div id="confirmSummary"></div>
+
+              <div class="notice notice--info is-hidden" id="loginNotice">
+                Bạn cần <strong>đăng nhập</strong> để đặt thư. Bản nháp của bạn sẽ được giữ lại trong tab này sau khi đăng nhập.
+              </div>
+
+              <h3 class="pay-heading" id="payHeading">Phương thức thanh toán</h3>
+              <div class="pay-methods" id="paymentMethods" role="radiogroup" aria-labelledby="payHeading"></div>
+
+              <label class="agree-box" for="agreeTerms">
+                <input type="checkbox" id="agreeTerms" />
+                <span>Tôi xác nhận đã kiểm tra chính xác ID TikTok và hiểu rõ <a href="/pages/dieu-khoan.html" target="_blank" rel="noopener">điều khoản sử dụng</a> của Cáo Đưa Thư.</span>
+              </label>
+              <p class="form-error" id="confirmError" role="alert"></p>
+            </section>
+
+            <!-- Điều hướng bước -->
+            <div class="wizard-nav" id="wizardNav">
+              <button type="button" class="btn btn--ghost" id="prevBtn" aria-label="Quay lại bước trước">← <span class="wizard-nav__txt">Quay lại</span></button>
+              <button type="button" class="btn btn--primary" id="nextBtn">Tiếp tục →</button>
+            </div>
+          </form>
+        </div>
+
+        <aside class="card send-summary" aria-label="Tóm tắt đơn">
+          <h3>Tóm tắt</h3>
+          <dl class="summary-list" id="sideSummary"></dl>
+          <p class="form-hint">Thanh toán bằng chuyển khoản hoặc ví F ở bước cuối. Đơn chuyển khoản chỉ được xử lý sau khi Cáo xác nhận đã nhận tiền.</p>
+        </aside>
+      </div>
+    </div>
+
+    <!-- ===== Đặt thư thành công + thanh toán ===== -->
+    <div class="card send-success is-hidden" id="successView">
+      <svg class="success-envelope" viewBox="0 0 120 96" width="132" height="106" aria-hidden="true">
+        <rect class="se-body" x="6" y="22" width="108" height="68" rx="9"/>
+        <path class="se-lines" d="M6 84 L46 54 M114 84 L74 54"/>
+        <path class="se-flap" d="M6 26 Q6 22 12 22 H108 Q114 22 114 26 L64 62 Q60 65 56 62 Z"/>
+        <circle class="se-seal" cx="60" cy="58" r="11"/>
+        <path class="se-heart" d="M60 65 C52 59 54 52.5 58 53 C59.4 53.2 60 54.5 60 54.5 C60 54.5 60.6 53.2 62 53 C66 52.5 68 59 60 65Z"/>
+      </svg>
+      <h2 id="successTitle">Đã ghi nhận đơn thư của bạn!</h2>
+      <p class="text-muted" id="successLead"></p>
+
+      <dl class="summary-list" id="successSummary"></dl>
+      <div id="successTimer" class="is-hidden"></div>
+      <div id="successPayment"></div>
+
+      <div class="hero__actions send-success__actions">
+        <a href="/pages/don-cua-toi.html" class="btn btn--primary">Xem đơn của tôi</a>
+        <a href="/index.html" class="btn btn--outline">Về trang chủ</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="app-footer"></footer>
+
+  <script type="module" src="/pages/send-letter.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+/**
+ * dashboard.css — Khung dùng chung cho toàn bộ Dashboard Admin
+ * (sidebar, topbar, breadcrumb, page container). Các trang quản trị
+ * tiếp theo (Đơn hàng, Khách hàng...) sẽ dùng chung file này và bổ
+ * sung CSS riêng trong assets/css/pages/ nếu cần.
+ */
+
+.dashboard-shell {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+/* ===== Sidebar ===== */
+.dashboard-sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 264px;
+  background: var(--color-ink-900);
+  color: #E3D4C3;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-5) var(--space-4);
+  transform: translateX(-100%);
+  transition: transform var(--transition-base);
+  z-index: 200;
+}
+.dashboard-sidebar.is-open { transform: translateX(0); }
+
+.dsidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-white);
+  font-family: var(--font-display);
+  font-weight: 700;
+  padding: var(--space-2) var(--space-2) var(--space-5);
+}
+.dsidebar__brand small { display: block; font-weight: 500; font-size: 0.7rem; color: #A89684; }
+
+.dsidebar__nav { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.dsidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #E3D4C3;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+.dsidebar__link svg { flex-shrink: 0; opacity: 0.85; }
+.dsidebar__link:hover { background: rgba(255,255,255,0.06); color: var(--color-white); }
+.dsidebar__link.is-active { background: var(--color-primary); color: var(--color-white); }
+.dsidebar__link.is-active svg { opacity: 1; }
+
+.dsidebar__back {
+  display: flex; align-items: center; gap: 8px;
+  padding: var(--space-3) var(--space-2);
+  font-size: 0.85rem;
+  color: #A89684;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin-top: var(--space-3);
+}
+.dsidebar__back:hover { color: var(--color-white); }
+
+.dashboard-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 190;
+}
+.dashboard-overlay.is-open { display: block; }
+
+/* ===== Topbar ===== */
+.dashboard-main { min-width: 0; }
+.dashboard-topbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  height: 68px;
+  padding-inline: var(--space-5);
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-line);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.dtopbar__toggle {
+  display: flex; flex-direction: column; justify-content: center; gap: 4px;
+  width: 32px; height: 32px;
+}
+.dtopbar__toggle span { display: block; height: 2px; background: var(--color-ink-900); border-radius: 2px; }
+
+/* ===== Breadcrumb ===== */
+.breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; flex-wrap: wrap; }
+.breadcrumb__link { color: var(--color-ink-600); }
+.breadcrumb__link:hover { color: var(--color-primary); }
+.breadcrumb__current { color: var(--color-ink-900); font-weight: 600; }
+.breadcrumb__sep { color: var(--color-ink-400); }
+
+/* ===== Page container ===== */
+.dashboard-page { padding: var(--space-6) var(--space-5) var(--space-9); }
+.dashboard-page__head { margin-bottom: var(--space-6); }
+.dashboard-page__head h1 { font-size: 1.5rem; margin-bottom: 4px; }
+
+@media (min-width: 1100px) {
+  .dashboard-sidebar { transform: translateX(0); }
+  .dashboard-main { margin-left: 264px; }
+  .dtopbar__toggle { display: none; }
+  .dashboard-overlay { display: none !important; }
+}
+
+/* ===== Vùng chạm tối thiểu 44px cho Dashboard trên điện thoại ===== */
+@media (max-width: 899px), (pointer: coarse) {
+  .dtopbar__toggle { width: 44px; height: 44px; }
+  .breadcrumb a, .breadcrumb span { display: inline-flex; align-items: center; min-height: 44px; }
+}

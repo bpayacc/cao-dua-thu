@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/img/favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+  <title>Quản lý đơn — Dashboard Cáo Đưa Thư</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Patrick+Hand&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/assets/css/variables.css" />
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/dashboard.css" />
+  <link rel="stylesheet" href="/assets/css/pages/dashboard-orders.css" />
+</head>
+<body>
+
+  <div class="dashboard-shell">
+    <aside class="dashboard-sidebar" id="dashboardSidebar"></aside>
+    <div class="dashboard-overlay" id="dashboardOverlay"></div>
+
+    <div class="dashboard-main">
+      <header class="dashboard-topbar" id="dashboardTopbar"></header>
+
+      <main class="dashboard-page">
+        <div id="pageBack"></div>
+        <div class="dashboard-page__head">
+          <h1>Quản lý đơn</h1>
+          <p class="text-muted">Đối soát thanh toán, xem nội dung thư và cập nhật trạng thái từng đơn. Trạng thái chỉ đổi khi bạn xác nhận thủ công.</p>
+        </div>
+
+        <!-- ===== Loading ===== -->
+        <div class="orders-loading" id="ordersLoading">
+          <span class="spinner"></span>
+          <span>Đang tải danh sách đơn...</span>
+        </div>
+
+        <!-- ===== Nội dung chính ===== -->
+        <div id="ordersContent" class="is-hidden">
+          <!-- Thẻ thống kê -->
+          <div class="grid grid--4" id="statCards" style="margin-bottom: var(--space-6);"></div>
+
+          <!-- Bộ lọc trạng thái -->
+          <div class="filter-tabs" id="statusTabs"></div>
+
+          <!-- Thanh công cụ: tìm kiếm -->
+          <div class="orders-toolbar">
+            <div class="orders-search">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <input type="text" class="form-control" id="orderSearchInput" placeholder="Tìm theo mã đơn, khách hàng, email, ID TikTok..." />
+            </div>
+          </div>
+
+          <!-- Bảng dữ liệu -->
+          <div class="orders-table-wrap" id="ordersTableWrap">
+            <table class="orders-table">
+              <thead>
+                <tr>
+                  <th>Mã đơn</th>
+                  <th>Khách hàng</th>
+                  <th>Gói / Người nhận</th>
+                  <th>Tổng tiền</th>
+                  <th>Thanh toán</th>
+                  <th>Trạng thái</th>
+                  <th>Hành động</th>
+                </tr>
+              </thead>
+              <tbody id="ordersTableBody"></tbody>
+            </table>
+          </div>
+
+          <!-- Empty state -->
+          <div class="empty-state is-hidden" id="ordersEmpty">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <p>Không có đơn nào khớp với bộ lọc hiện tại.</p>
+          </div>
+
+          <!-- Phân trang -->
+          <div class="pagination" id="ordersPagination"></div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="/dashboard/orders.js"></script>
+</body>
+</html>

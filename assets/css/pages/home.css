@@ -1,0 +1,131 @@
+/**
+ * pages/home.css — Style riêng Trang chủ (mobile-first)
+ */
+
+.btn--lg { padding: 15px 28px; font-size: 1.02rem; }
+
+/* ---- Hero ---- */
+.hero { padding-block: var(--space-6) var(--space-7); overflow: hidden; }
+.hero__inner { display: grid; gap: var(--space-5); align-items: center; }
+.hero__copy h1 { font-size: clamp(2.5rem, 11vw, 4.4rem); line-height: 1.05; margin-bottom: var(--space-3); }
+.hero__accent { color: var(--color-primary); }
+.hero__copy p { font-size: 1.15rem; max-width: 460px; color: var(--color-ink-700); }
+
+.hero__visual { position: relative; display: flex; justify-content: center; min-height: 270px; }
+.hero__fox { width: min(70vw, 300px); height: auto; position: relative; z-index: 1; animation: foxFloat 5s ease-in-out infinite; }
+.hero__postmark { position: absolute; top: 0; right: 4%; width: 96px; height: 96px; opacity: 0.85; transform: rotate(14deg); }
+.hero__float { position: absolute; font-size: 1.8rem; animation: foxFloat 4s ease-in-out infinite; }
+.hero__float--1 { left: 6%; top: 12%; animation-delay: -1s; }
+.hero__float--2 { left: 2%; bottom: 22%; animation-delay: -2.2s; font-size: 1.5rem; }
+.hero__float--3 { right: 8%; bottom: 14%; animation-delay: -3s; font-size: 1.4rem; }
+@keyframes foxFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+
+@media (min-width: 900px) {
+  .hero { padding-block: var(--space-8) var(--space-8); }
+  .hero__inner { grid-template-columns: 1.15fr 1fr; gap: var(--space-7); }
+  .hero__visual { min-height: 380px; }
+  .hero__fox { width: 340px; }
+  .hero__postmark { width: 120px; height: 120px; right: 6%; }
+}
+
+/* ---- Giới thiệu ---- */
+.intro-card {
+  background: var(--color-paper); border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-lg); padding: var(--space-5);
+  box-shadow: var(--shadow-sm); position: relative;
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 35px, rgba(46,111,149,0.08) 35px, rgba(46,111,149,0.08) 36px);
+}
+.intro-card::after { content: '✉'; position: absolute; right: 18px; top: 10px; font-size: 1.6rem; opacity: .25; }
+.intro-card p { color: var(--color-ink-700); max-width: 720px; }
+.intro-card__lead { font-family: var(--font-hand); font-size: 1.35rem; line-height: 1.5; color: var(--color-ink-900) !important; }
+@media (min-width: 700px) { .intro-card { padding: var(--space-7) var(--space-7); } }
+
+.slogan-grid { display: grid; gap: var(--space-3); margin-top: var(--space-5); grid-template-columns: 1fr 1fr; }
+@media (min-width: 900px) { .slogan-grid { grid-template-columns: repeat(4, 1fr); gap: var(--space-4); } }
+.slogan-card { border-radius: var(--radius-md); padding: var(--space-4); border: 1.5px dashed var(--color-line-strong); background: var(--color-white); transition: transform var(--transition-base); }
+.slogan-card:hover { transform: translateY(-4px) rotate(-1deg); }
+.slogan-card span { font-size: 1.8rem; display: block; margin-bottom: 4px; }
+.slogan-card strong { font-family: var(--font-display); font-size: 1.05rem; display: block; color: var(--color-ink-900); line-height: 1.25; }
+.slogan-card p { margin: 6px 0 0; font-size: 0.85rem; }
+.slogan-card--1 { background: #FFF3F5; } .slogan-card--2 { background: var(--color-stamp-100); }
+.slogan-card--3 { background: var(--color-primary-50); } .slogan-card--4 { background: #F3F0FF; }
+
+/* ---- Cách gửi thư ---- */
+.how-steps { display: grid; gap: var(--space-3); counter-reset: step; }
+@media (min-width: 900px) { .how-steps { grid-template-columns: repeat(5, 1fr); } }
+.how-step {
+  display: flex; gap: var(--space-3); align-items: flex-start;
+  background: var(--color-white); border: 1px solid var(--color-line); border-radius: var(--radius-md);
+  padding: var(--space-4); box-shadow: var(--shadow-sm);
+}
+@media (min-width: 900px) { .how-step { flex-direction: column; } }
+.how-step__num {
+  width: 42px; height: 42px; flex-shrink: 0; border-radius: 50%;
+  background: var(--color-primary); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 800; font-size: 1.15rem;
+  box-shadow: 0 0 0 5px var(--color-primary-100);
+}
+.how-step h3 { font-size: 1.02rem; margin-bottom: 4px; }
+.how-step p { margin: 0; font-size: 0.88rem; }
+
+/* ---- Bảng giá ---- */
+.price-grid { display: grid; gap: var(--space-4); max-width: 1000px; }
+@media (min-width: 640px) { .price-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 960px) { .price-grid { grid-template-columns: repeat(3, 1fr); } }
+.price-card {
+  display: flex; flex-direction: column; gap: 6px;
+  background: var(--color-white); border: 2px solid var(--color-line-strong);
+  border-radius: var(--radius-lg); padding: var(--space-5); box-shadow: var(--shadow-sm);
+}
+.price-card--accent { border-color: var(--color-primary); background: var(--color-primary-50); }
+.price-card__icon { font-size: 1.8rem; letter-spacing: 2px; }
+.price-card h3 { margin: 0; }
+.price-card p { margin: 0 0 var(--space-3); font-size: 0.92rem; }
+.price-card__price { font-family: var(--font-mono); font-weight: 700; font-size: 1.9rem; color: var(--color-primary-600); margin-bottom: var(--space-3); }
+
+/* ---- FAQ (accordion) ---- */
+.faq-list { display: flex; flex-direction: column; gap: var(--space-3); max-width: 820px; }
+.faq-item { background: var(--color-white); border: 1px solid var(--color-line); border-radius: var(--radius-md); overflow: hidden; }
+.faq-item__question {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--space-3);
+  text-align: left; padding: var(--space-4) var(--space-5); font-weight: 600; color: var(--color-ink-900);
+}
+.faq-item__chevron { display: flex; color: var(--color-ink-400); transition: transform var(--transition-fast); flex-shrink: 0; }
+.faq-item.is-open .faq-item__chevron { transform: rotate(180deg); color: var(--color-primary); }
+.faq-item.is-open { border-color: var(--color-primary-100); box-shadow: var(--shadow-sm); }
+.faq-item__answer { max-height: 0; overflow: hidden; transition: max-height var(--transition-base); }
+.faq-item__answer p { padding: 0 var(--space-5) var(--space-4); margin: 0; font-size: 0.93rem; }
+
+/* ---- CTA ---- */
+.cta-banner { position: relative; }
+.cta-banner__fox { margin: 0 auto var(--space-3); filter: drop-shadow(0 6px 10px rgba(0,0,0,.18)); }
+
+/* ===== Bố cục gọn cho điện thoại ===== */
+@media (max-width: 640px) {
+  .hero { padding-block: var(--space-3) var(--space-5); }
+  .hero__inner { gap: var(--space-3); }
+  .hero__copy h1 { font-size: clamp(2.1rem, 9.5vw, 2.6rem); margin-bottom: var(--space-2); }
+  .hero__copy p { font-size: 1rem; }
+  .hero__visual { min-height: 190px; }
+  .hero__fox { width: min(50vw, 200px); }
+  .hero__postmark { width: 72px; height: 72px; }
+  .hero__float { font-size: 1.4rem; }
+  .intro-card { padding: var(--space-4); }
+  .intro-card__lead { font-size: 1.15rem; }
+  .slogan-grid { margin-top: var(--space-3); gap: var(--space-2); }
+  .slogan-card { padding: 12px; }
+  .slogan-card span { font-size: 1.4rem; }
+  .slogan-card strong { font-size: 0.98rem; }
+  .how-steps { gap: var(--space-2); }
+  .how-step { padding: 12px; gap: 12px; align-items: center; }
+  .how-step__num { width: 36px; height: 36px; font-size: 1rem; box-shadow: 0 0 0 4px var(--color-primary-100); }
+  .price-grid { gap: var(--space-3); }
+  .price-card { padding: var(--space-4); }
+  .price-card p { margin-bottom: var(--space-2); }
+  .price-card__price { font-size: 1.6rem; margin-bottom: var(--space-2); }
+  .faq-list { gap: var(--space-2); }
+  .faq-item__question { padding: 12px var(--space-4); }
+  .faq-item__answer p { padding: 0 var(--space-4) var(--space-3); }
+}
+@media (max-width: 640px) { .faq-item__question { min-height: 44px; } }

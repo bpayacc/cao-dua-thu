@@ -1,0 +1,28 @@
+/**
+ * pages/terms.css — Style riêng trang Điều khoản
+ */
+.terms-page { padding-block: var(--space-5) var(--space-8); }
+.terms-list { display: grid; gap: var(--space-3); max-width: 760px; counter-reset: term; margin-bottom: var(--space-5); }
+.terms-item {
+  counter-increment: term; position: relative;
+  background: var(--color-white); border: 1px solid var(--color-line); border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-4) var(--space-4) 68px; box-shadow: var(--shadow-sm);
+}
+.terms-item::before {
+  content: counter(term); position: absolute; left: var(--space-4); top: var(--space-4);
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--color-primary-100); color: var(--color-primary-600);
+  font-family: var(--font-display); font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+}
+.terms-item h2 { font-size: 1.05rem; margin-bottom: 4px; }
+.terms-item p { margin: 0; font-size: 0.95rem; color: var(--color-ink-700); }
+.terms-item--highlight { background: var(--color-warning-bg); border-color: #F0D9AE; }
+.terms-item--highlight::before { background: #F7DFB3; color: var(--color-warning); }
+
+/* ===== Bố cục gọn cho điện thoại ===== */
+@media (max-width: 640px) {
+  .terms-page { padding-block: var(--space-3) var(--space-6); }
+  .terms-item { padding: var(--space-3) var(--space-3) var(--space-3) 56px; }
+  .terms-item::before { left: var(--space-3); top: var(--space-3); width: 30px; height: 30px; font-size: 0.9rem; }
+}

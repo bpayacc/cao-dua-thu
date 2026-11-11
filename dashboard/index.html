@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/img/favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+  <title>Tổng quan — Dashboard Cáo Đưa Thư</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Patrick+Hand&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/assets/css/variables.css" />
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/dashboard.css" />
+  <link rel="stylesheet" href="/assets/css/pages/dashboard-orders.css" />
+</head>
+<body>
+
+  <div class="dashboard-shell">
+    <aside class="dashboard-sidebar" id="dashboardSidebar"></aside>
+    <div class="dashboard-overlay" id="dashboardOverlay"></div>
+
+    <div class="dashboard-main">
+      <header class="dashboard-topbar" id="dashboardTopbar"></header>
+
+      <main class="dashboard-page">
+        <div class="dashboard-page__head">
+          <h1>Chào mừng trở lại 🦊</h1>
+          <p class="text-muted">Tổng quan các đơn gửi thư. Số liệu lấy trực tiếp từ Firestore.</p>
+        </div>
+
+        <div class="orders-loading" id="overviewLoading"><span class="spinner"></span><span>Đang tải số liệu...</span></div>
+        <p class="form-error is-hidden" id="overviewError"></p>
+
+        <div id="overviewContent" class="is-hidden">
+          <div class="grid grid--4" id="overviewStats" style="margin-bottom: var(--space-6);"></div>
+
+          <div class="card" id="overviewTodo">
+            <h3>Việc cần làm</h3>
+            <ul class="todo-list" id="todoList"></ul>
+            <a href="/dashboard/don-hang.html" class="btn btn--primary btn--sm">Mở Quản lý đơn</a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="/dashboard/overview.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+  <title>Đăng ký — Cáo Đưa Thư</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/img/favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+  <meta name="description" content="Tạo tài khoản Cáo Đưa Thư miễn phí để bắt đầu gửi những bức thư TikTok." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Patrick+Hand&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/assets/css/variables.css" />
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/pages/auth.css" />
+</head>
+<body>
+
+  <header class="site-header" id="app-header"></header>
+
+  <main class="auth-page">
+    <div class="container" style="padding-bottom: var(--space-4);"><div id="pageBack"></div></div>
+    <div class="auth-wrap">
+      <div class="auth-card">
+        <div class="auth-card__head">
+          <span>Bắt đầu miễn phí</span>
+          <h1>Tạo tài khoản Cáo Đưa Thư</h1>
+          <p class="text-muted">Chỉ mất chưa tới 1 phút để gửi bức thư đầu tiên.</p>
+        </div>
+
+        <form id="registerForm" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="fullName">Họ và tên</label>
+            <input class="form-control" type="text" id="fullName" name="fullName" placeholder="Nguyễn Văn A" autocomplete="name" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-control" type="email" id="email" name="email" placeholder="ban@email.com" autocomplete="email" required />
+          </div>
+
+          <div class="form-row form-row--2">
+            <div class="form-group">
+              <label class="form-label" for="password">Mật khẩu</label>
+              <input class="form-control" type="password" id="password" name="password" placeholder="Tối thiểu 6 ký tự" autocomplete="new-password" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="confirmPassword">Nhập lại mật khẩu</label>
+              <input class="form-control" type="password" id="confirmPassword" name="confirmPassword" placeholder="Nhập lại mật khẩu" autocomplete="new-password" required />
+            </div>
+          </div>
+
+          <div class="form-remember">
+            <label><input type="checkbox" id="agreeTerms" /> Tôi đồng ý với <a href="/pages/dieu-khoan.html" target="_blank" rel="noopener">Điều khoản sử dụng</a></label>
+          </div>
+
+          <p class="form-error" id="registerError" role="alert"></p>
+
+          <button type="submit" class="btn btn--primary btn--block" id="registerSubmitBtn">Tạo tài khoản</button>
+        </form>
+
+        <p class="auth-card__foot">Đã có tài khoản? <a href="/pages/auth/dang-nhap.html">Đăng nhập</a></p>
+      </div>
+
+      <aside class="auth-side">
+        <span class="auth-side__badge">✉️ Cáo Đưa Thư</span>
+        <h2>Bạn viết thư, Cáo sẽ đưa</h2>
+        <p>Tạo tài khoản để quản lý các bức thư đã gửi. Thư và thông tin người gửi chỉ dùng để xử lý đơn hàng.</p>
+        <img class="auth-side__fox" src="/assets/img/fox-mascot.svg" alt="Chú cáo đưa thư" width="200" height="208" />
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="app-footer"></footer>
+
+  <script type="module" src="/pages/register.js"></script>
+</body>
+</html>

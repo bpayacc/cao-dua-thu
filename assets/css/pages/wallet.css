@@ -1,0 +1,52 @@
+/**
+ * pages/wallet.css — Style riêng trang Ví của tôi (mobile-first)
+ */
+.wallet-page { padding-block: var(--space-4) var(--space-8); }
+
+.balance-card {
+  position: relative; overflow: hidden; margin-bottom: var(--space-4);
+  padding: var(--space-5); border-radius: var(--radius-lg); color: #fff;
+  background: linear-gradient(145deg, var(--color-primary) 0%, var(--color-primary-600) 60%, var(--color-primary-700) 100%);
+  box-shadow: var(--shadow-md);
+}
+.balance-card__fox { position: absolute; right: 10px; top: 10px; opacity: 0.9; width: 72px; height: auto; }
+.balance-card__label { margin: 0; font-size: 0.9rem; opacity: 0.92; }
+.balance-card__amount { margin: var(--space-1) 0 var(--space-2); font-family: var(--font-display); font-weight: 800; font-size: clamp(2.1rem, 10vw, 2.9rem); line-height: 1.1; color: #fff; }
+.balance-card__amount .f-coin { box-shadow: inset 0 0 0 0.11em #fff, 0 1px 3px rgba(0, 0, 0, 0.3); }
+.balance-card__note { margin: 0 0 var(--space-4); font-size: 0.8rem; opacity: 0.9; padding-right: 70px; }
+.balance-card__btn { background: #fff; color: var(--color-primary-700); font-weight: 700; min-height: 48px; }
+
+.topup-panel { margin-bottom: var(--space-4); }
+.topup-panel__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-3); }
+.topup-panel__head h2 { margin: 0; font-size: 1.3rem; }
+.chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin: var(--space-3) 0 var(--space-2); }
+.chip { min-height: 44px; padding: 0 16px; border-radius: var(--radius-pill); border: 1.5px solid var(--color-line-strong); background: var(--color-white); font-weight: 600; color: var(--color-ink-900); }
+.chip:active, .chip:hover { border-color: var(--color-primary); background: var(--color-primary-50); }
+.topup-steps { margin: var(--space-4) 0 0; padding-left: 20px; list-style: decimal; display: grid; gap: 6px; font-size: 0.86rem; color: var(--color-ink-600); }
+#topupResult .btn { margin-top: var(--space-4); }
+
+.wallet-list { display: grid; gap: var(--space-3); margin-top: var(--space-3); }
+.wallet-item { display: grid; gap: 2px; padding: var(--space-4); }
+.wallet-item__head { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); margin-bottom: var(--space-2); flex-wrap: wrap; }
+.wallet-item__code { font-weight: 700; }
+.wallet-row { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-3); padding: 6px 0; border-bottom: 1px dashed var(--color-line); font-size: 0.9rem; }
+.wallet-row:last-of-type { border-bottom: none; }
+.wallet-row span { color: var(--color-ink-600); flex-shrink: 0; }
+.wallet-row strong { text-align: right; min-width: 0; word-break: break-word; }
+.wallet-row small { font-weight: 500; color: var(--color-ink-600); }
+.wallet-reason { margin: var(--space-2) 0 0; padding: var(--space-3); border-radius: var(--radius-sm); background: var(--color-bg-soft); font-size: 0.88rem; }
+.wallet-note { margin: 0 0 var(--space-2); font-size: 0.88rem; color: var(--color-ink-700); word-break: break-word; }
+.wallet-delta { font-weight: 800; font-size: 1.1rem; }
+.wallet-delta.is-plus { color: var(--color-success); }
+.wallet-delta.is-minus { color: var(--color-danger); }
+.wallet-empty { padding: var(--space-7) var(--space-4); text-align: center; color: var(--color-ink-600); background: var(--color-bg-soft); border-radius: var(--radius-md); }
+.wallet-item .btn { margin-top: var(--space-3); }
+
+/* ===== Bố cục gọn cho điện thoại ===== */
+@media (max-width: 640px) {
+  .wallet-page { padding-block: var(--space-3) var(--space-6); }
+  .balance-card { padding: var(--space-4); margin-bottom: var(--space-3); }
+  .balance-card__note { margin-bottom: var(--space-3); }
+  .wallet-item { padding: var(--space-3); }
+  .wallet-list { gap: var(--space-2); }
+}

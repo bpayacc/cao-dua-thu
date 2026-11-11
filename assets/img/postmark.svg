@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs><path id="arc" d="M60 60 m-40 0 a40 40 0 1 1 80 0 a40 40 0 1 1 -80 0"/></defs>
+  <circle cx="60" cy="60" r="55" stroke="#2E6F95" stroke-width="3" stroke-dasharray="2 5" stroke-linecap="round"/>
+  <circle cx="60" cy="60" r="31" stroke="#2E6F95" stroke-width="2.5"/>
+  <text font-family="Be Vietnam Pro, Segoe UI, sans-serif" font-size="11.5" font-weight="700" letter-spacing="2.4" fill="#2E6F95"><textPath href="#arc" startOffset="2">CÁO ĐƯA THƯ ✦ GỬI TẬN TAY ✦</textPath></text>
+  <path d="M46 56 h28 v18 h-28z" stroke="#2E6F95" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M46 56 l14 10 l14 -10" stroke="#2E6F95" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

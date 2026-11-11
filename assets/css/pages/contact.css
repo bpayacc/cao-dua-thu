@@ -1,0 +1,24 @@
+/**
+ * pages/contact.css — Style riêng trang Liên hệ
+ */
+.contact-page { padding-block: var(--space-5) var(--space-8); }
+
+.contact-grid { display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
+@media (min-width: 640px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 960px) { .contact-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.contact-card { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+.contact-card__icon { font-size: 1.9rem; }
+.contact-card strong { font-family: var(--font-display); font-size: 1.1rem; }
+.contact-card__value { font-size: 0.9rem; color: var(--color-primary-600); font-weight: 600; word-break: break-all; }
+.contact-card--empty { background: var(--color-bg-soft); border-style: dashed; box-shadow: none; }
+.contact-card__soon { font-size: 0.85rem; color: var(--color-ink-400); font-weight: 600; }
+
+.contact-tip { margin-top: var(--space-5); max-width: 720px; }
+.contact-tip a { color: var(--color-primary-600); font-weight: 600; text-decoration: underline; }
+
+/* ===== Bố cục gọn cho điện thoại ===== */
+@media (max-width: 640px) {
+  .contact-page { padding-block: var(--space-3) var(--space-6); }
+  .contact-grid { gap: var(--space-3); }
+}

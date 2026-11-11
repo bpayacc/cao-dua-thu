@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+  <title>Cáo Đưa Thư — Bạn viết thư, Cáo sẽ đưa</title>
+  <meta name="description" content="Cáo Đưa Thư giúp bạn gửi những bức thư, lời nhắn và tâm sự đến người khác qua TikTok — ẩn danh hoặc có tên. Có những điều khó nói trực tiếp, hãy để Cáo thay bạn gửi đi." />
+  <meta property="og:title" content="Cáo Đưa Thư — Bạn viết thư, Cáo sẽ đưa" />
+  <meta property="og:description" content="Có những điều khó nói trực tiếp, hãy để Cáo thay bạn gửi đi." />
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/img/favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Patrick+Hand&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/assets/css/variables.css" />
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/pages/home.css" />
+</head>
+<body>
+
+  <header class="site-header" id="app-header"></header>
+
+  <main>
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <span class="section__eyebrow">✉️ Thư TikTok · ẩn danh hoặc có tên</span>
+          <h1>Bạn viết thư,<br /><span class="hero__accent">Cáo sẽ đưa.</span></h1>
+          <p>Có những điều khó nói trực tiếp, hãy để Cáo thay bạn gửi đi.</p>
+          <div class="hero__actions">
+            <a href="/pages/gui-thu.html" class="btn btn--primary btn--lg">Gửi một bức thư</a>
+            <a href="#cach-gui" class="btn btn--outline btn--lg">Cách gửi thư</a>
+          </div>
+        </div>
+        <div class="hero__visual" aria-hidden="true">
+          <img class="hero__postmark" src="/assets/img/postmark.svg" alt="" width="110" height="110" />
+          <img class="hero__fox" src="/assets/img/fox-mascot.svg" alt="" width="300" height="312" />
+          <span class="hero__float hero__float--1">💌</span>
+          <span class="hero__float hero__float--2">✉️</span>
+          <span class="hero__float hero__float--3">💗</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Giới thiệu ===== -->
+    <section class="section container" id="gioi-thieu">
+      <div class="intro-card" data-reveal>
+        <span class="section__eyebrow">Cáo Đưa Thư là gì?</span>
+        <p class="intro-card__lead">Đôi khi có những điều bạn muốn nói nhưng lại chẳng biết bắt đầu từ đâu. Một lời cảm ơn, một lời xin lỗi, một lời tỏ tình hay đơn giản là một câu hỏi chưa từng được gửi đi.</p>
+        <p>Cáo Đưa Thư ra đời để giúp bạn chuyển những lời nhắn ấy đến đúng người. Bạn chỉ cần viết thư, cung cấp tài khoản TikTok của người nhận, phần còn lại hãy để Cáo lo.</p>
+        <p>Chúng tôi sẽ cố gắng gửi thư trong khoảng thời gian sớm nhất có thể.</p>
+      </div>
+
+      <div class="slogan-grid">
+        <article class="slogan-card slogan-card--1" data-reveal><span>🌷</span><strong>Một lời cảm ơn</strong><p>Điều nhỏ xíu nhưng đáng được nói ra.</p></article>
+        <article class="slogan-card slogan-card--2" data-reveal><span>🤝</span><strong>Một lời xin lỗi</strong><p>Khó nói thành lời thì cứ viết thành thư.</p></article>
+        <article class="slogan-card slogan-card--3" data-reveal><span>💗</span><strong>Một lời tỏ tình</strong><p>Bí mật nhỏ, Cáo giữ kín giúp bạn.</p></article>
+        <article class="slogan-card slogan-card--4" data-reveal><span>❓</span><strong>Một câu hỏi chưa gửi</strong><p>Đã đến lúc nó tìm được người nhận.</p></article>
+      </div>
+    </section>
+
+    <!-- ===== Cách gửi thư ===== -->
+    <section class="section container" id="cach-gui">
+      <div class="section__head">
+        <span class="section__eyebrow">Cách gửi thư</span>
+        <h2>5 bước nhỏ, một bức thư to</h2>
+        <p>Bạn không cần mật khẩu TikTok của ai cả — chỉ cần ID công khai của người nhận.</p>
+      </div>
+      <ol class="how-steps">
+        <li class="how-step" data-reveal><span class="how-step__num">1</span><div><h3>Chọn gói thư</h3><p>Gửi 1 thư hoặc 3 thư (mỗi thư một nội dung riêng).</p></div></li>
+        <li class="how-step" data-reveal><span class="how-step__num">2</span><div><h3>Ẩn danh hay có tên?</h3><p>Giấu tên hoàn toàn, hoặc ký tên ở cuối thư.</p></div></li>
+        <li class="how-step" data-reveal><span class="how-step__num">3</span><div><h3>Nhập ID TikTok người nhận</h3><p>Tài khoản cần công khai và cho phép nhận tin nhắn từ người lạ.</p></div></li>
+        <li class="how-step" data-reveal><span class="how-step__num">4</span><div><h3>Viết thư</h3><p>Viết trên trang giấy thư, xem trước tin nhắn người nhận sẽ thấy.</p></div></li>
+        <li class="how-step" data-reveal><span class="how-step__num">5</span><div><h3>Xác nhận & chuyển khoản</h3><p>Kiểm tra lại thông tin, thanh toán và theo dõi đơn của bạn.</p></div></li>
+      </ol>
+    </section>
+
+    <!-- ===== Bảng giá (đọc từ config/constants.js) ===== -->
+    <section class="section container" id="bang-gia">
+      <div class="section__head">
+        <span class="section__eyebrow">Bảng giá</span>
+        <h2>Chọn gói phù hợp với bạn</h2>
+      </div>
+      <div class="price-grid" id="priceGrid"></div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="section container" id="faq">
+      <div class="section__head">
+        <span class="section__eyebrow">Câu hỏi thường gặp</span>
+        <h2>Cáo trả lời nhanh</h2>
+      </div>
+      <div class="faq-list" id="faqList"></div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="container" style="padding-bottom: var(--space-8);">
+      <div class="cta-banner" data-reveal>
+        <img src="/assets/img/fox-mascot.svg" alt="" width="120" height="125" class="cta-banner__fox" aria-hidden="true" />
+        <h2>Có điều gì đó bạn muốn nói?</h2>
+        <p>Viết ra đi — phần còn lại để Cáo lo.</p>
+        <div class="hero__actions" style="justify-content:center;">
+          <a href="/pages/gui-thu.html" class="btn btn--primary btn--lg">Gửi một bức thư</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="app-footer"></footer>
+
+  <script type="module" src="/pages/home.js"></script>
+</body>
+</html>

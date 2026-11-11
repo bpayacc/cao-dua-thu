@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+  <title>Đăng nhập — Cáo Đưa Thư</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/img/favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+  <meta name="description" content="Đăng nhập vào Cáo Đưa Thư để gửi thư TikTok và theo dõi đơn hàng của bạn." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Patrick+Hand&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/assets/css/variables.css" />
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/pages/auth.css" />
+</head>
+<body>
+
+  <header class="site-header" id="app-header"></header>
+
+  <main class="auth-page">
+    <div class="container" style="padding-bottom: var(--space-4);"><div id="pageBack"></div></div>
+    <div class="auth-wrap">
+      <div class="auth-card">
+        <div class="auth-card__head">
+          <span>Chào mừng trở lại</span>
+          <h1>Đăng nhập tài khoản</h1>
+          <p class="text-muted">Gửi thư mới và theo dõi đơn của bạn chỉ trong vài giây.</p>
+        </div>
+
+        <form id="loginForm" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-control" type="email" id="email" name="email" placeholder="ban@email.com" autocomplete="email" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="password">Mật khẩu</label>
+            <div class="input-password-wrap">
+              <input class="form-control" type="password" id="password" name="password" placeholder="Nhập mật khẩu" autocomplete="current-password" required />
+              <button type="button" class="input-password-toggle" id="togglePassword">Hiện</button>
+            </div>
+          </div>
+
+          <div class="form-remember">
+            <label><input type="checkbox" /> Ghi nhớ đăng nhập</label>
+            <a href="#" id="forgotPasswordLink">Quên mật khẩu?</a>
+          </div>
+
+          <p class="form-error" id="loginError" role="alert"></p>
+
+          <button type="submit" class="btn btn--primary btn--block" id="loginSubmitBtn">Đăng nhập</button>
+        </form>
+
+        <p class="auth-card__foot">Chưa có tài khoản? <a href="/pages/auth/dang-ky.html">Đăng ký ngay</a></p>
+      </div>
+
+      <aside class="auth-side">
+        <span class="auth-side__badge">✉️ Cáo Đưa Thư</span>
+        <h2>Có những điều khó nói, để Cáo đưa giúp bạn</h2>
+        <p>Đăng nhập để gửi thư, theo dõi đơn và xem trạng thái xử lý từng bức thư của bạn.</p>
+        <img class="auth-side__fox" src="/assets/img/fox-mascot.svg" alt="Chú cáo đưa thư" width="200" height="208" />
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="app-footer"></footer>
+
+  <script type="module" src="/pages/login.js"></script>
+</body>
+</html>

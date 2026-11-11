@@ -1,0 +1,57 @@
+# netlify.toml
+# Cáo Đưa Thư là site tĩnh (HTML/CSS/JS thuần, ES Modules) — KHÔNG cần bước build.
+# Build command để trống, thư mục publish là gốc dự án.
+[build]
+  publish = "."
+
+# Netlify Functions (ES Module, không cần build, không cần npm install).
+# Endpoint kiểm tra TikTok: /.netlify/functions/check-tiktok
+[functions]
+  directory = "netlify/functions"
+  # esbuild gộp luôn utils/validators.js (dùng chung với frontend) vào function khi deploy.
+  node_bundler = "esbuild"
+  # firebase-admin để nguyên dạng thư viện (cài từ package.json), không gộp vào bundle.
+  external_node_modules = ["firebase-admin"]
+
+# Mỗi trang là một file HTML thật nên tải lại (F5) hoặc mở link trực tiếp đều không bị 404.
+# Rút gọn đường dẫn quản trị:
+[[redirects]]
+  from = "/dashboard"
+  to = "/dashboard/index.html"
+  status = 200
+
+# Vì publish = "." nên thư mục netlify/ cũng nằm trong site tĩnh: chặn truy cập mã nguồn Functions qua URL thường.
+[[redirects]]
+  from = "/netlify/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/tests/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/gui-thu"
+  to = "/pages/gui-thu.html"
+  status = 200
+
+[[redirects]]
+  from = "/dieu-khoan"
+  to = "/pages/dieu-khoan.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache ảnh/CSS vừa phải
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"

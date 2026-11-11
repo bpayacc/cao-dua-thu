@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+  <title>Hồ sơ của tôi — Cáo Đưa Thư</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/img/favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Patrick+Hand&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/assets/css/variables.css" />
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/pages/profile.css" />
+</head>
+<body>
+
+  <header class="site-header" id="app-header"></header>
+
+  <main class="profile-page container">
+    <div id="pageBack"></div>
+    <div class="profile-summary">
+      <span class="avatar" id="profileAvatar">?</span>
+      <div>
+        <h1 id="profileName">—</h1>
+        <p id="profileEmail">—</p>
+      </div>
+    </div>
+
+    <div class="card" id="verifyEmailBanner" style="display:none; margin-bottom: var(--space-5); background: var(--color-warning-bg); border-color: transparent;">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap: var(--space-3); flex-wrap: wrap;">
+        <p style="margin:0; color: var(--color-warning); font-weight:600;">⚠️ Email của bạn chưa được xác minh.</p>
+        <button type="button" class="btn btn--sm btn--dark" id="resendVerifyBtn">Gửi lại email xác minh</button>
+      </div>
+    </div>
+
+    <div class="profile-grid">
+      <section class="card">
+        <h2>Thông tin cá nhân</h2>
+        <form id="profileForm">
+          <div class="form-group">
+            <label class="form-label" for="fullName">Họ và tên</label>
+            <input class="form-control" type="text" id="fullName" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-control" type="email" id="email" disabled />
+            <p class="form-hint">Không thể thay đổi email đăng nhập.</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="phone">Số điện thoại (không bắt buộc)</label>
+            <input class="form-control" type="tel" id="phone" placeholder="09xxxxxxxx" />
+          </div>
+          <button type="submit" class="btn btn--primary">Lưu thay đổi</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Đổi mật khẩu</h2>
+        <form id="passwordForm">
+          <div class="form-group">
+            <label class="form-label" for="currentPassword">Mật khẩu hiện tại</label>
+            <input class="form-control" type="password" id="currentPassword" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="newPassword">Mật khẩu mới</label>
+            <input class="form-control" type="password" id="newPassword" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="confirmNewPassword">Nhập lại mật khẩu mới</label>
+            <input class="form-control" type="password" id="confirmNewPassword" required />
+          </div>
+          <button type="submit" class="btn btn--dark">Đổi mật khẩu</button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="app-footer"></footer>
+
+  <script type="module" src="/pages/profile.js"></script>
+</body>
+</html>

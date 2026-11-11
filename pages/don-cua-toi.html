@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+  <title>Đơn của tôi — Cáo Đưa Thư</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/img/favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+  <meta name="description" content="Theo dõi lịch sử và trạng thái các bức thư bạn đã nhờ Cáo Đưa Thư gửi." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Patrick+Hand&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/assets/css/variables.css" />
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/pages/my-orders.css" />
+</head>
+<body>
+
+  <header class="site-header" id="app-header"></header>
+
+  <main class="orders-page container">
+    <div id="pageBack"></div>
+    <div class="orders-page__head">
+      <span class="section__eyebrow">Lịch sử gửi thư</span>
+      <h1>Đơn của tôi</h1>
+      <p class="text-muted">Theo dõi trạng thái và xem lại các bức thư bạn đã nhờ Cáo gửi.</p>
+    </div>
+
+    <div class="filter-tabs" id="filterTabs"></div>
+
+    <div class="orders-list" id="ordersList"></div>
+
+    <div class="empty-state is-hidden" id="ordersEmpty">
+      <svg width="56" height="56" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <p id="ordersEmptyText">Chưa có đơn nào trong mục này.</p>
+      <a href="/pages/gui-thu.html" class="btn btn--primary btn--sm">Gửi một bức thư</a>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="app-footer"></footer>
+
+  <script type="module" src="/pages/my-orders.js"></script>
+</body>
+</html>

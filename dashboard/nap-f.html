@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/img/favicon-64.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png" />
+  <title>Nạp F — Dashboard Cáo Đưa Thư</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Patrick+Hand&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="/assets/css/variables.css" />
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/dashboard.css" />
+  <link rel="stylesheet" href="/assets/css/pages/dashboard-orders.css" />
+  <link rel="stylesheet" href="/assets/css/pages/wallet.css" />
+</head>
+<body>
+
+  <div class="dashboard-shell">
+    <aside class="dashboard-sidebar" id="dashboardSidebar"></aside>
+    <div class="dashboard-overlay" id="dashboardOverlay"></div>
+
+    <div class="dashboard-main">
+      <header class="dashboard-topbar" id="dashboardTopbar"></header>
+
+      <main class="dashboard-page">
+        <div id="pageBack"></div>
+        <div class="dashboard-page__head">
+          <h1>Yêu cầu nạp F</h1>
+          <p class="text-muted">Kiểm tra TIỀN THỰC NHẬN trong tài khoản ngân hàng rồi mới bấm Xác nhận. Hệ thống không tự đối soát ngân hàng; F chỉ được cộng khi bạn xác nhận.</p>
+        </div>
+        <div class="orders-loading" id="topupsLoading"><span class="spinner"></span><span>Đang tải yêu cầu nạp...</span></div>
+        <div id="topupsContent" class="is-hidden">
+          <div class="filter-tabs" id="topupTabs"></div>
+          <div class="orders-toolbar"><div class="orders-search"><input type="text" class="form-control" id="topupSearch" placeholder="Tìm mã nạp, tên, email..." /></div></div>
+          <div class="admin-cards" id="topupList"></div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="/dashboard/topups.js"></script>
+</body>
+</html>

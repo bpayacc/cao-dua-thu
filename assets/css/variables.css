@@ -1,0 +1,80 @@
+/**
+ * variables.css — Design Tokens
+ * Nguồn chân lý duy nhất cho màu sắc, khoảng cách, bo góc, shadow, font.
+ * Không hard-code giá trị màu/khoảng cách trực tiếp ở file CSS khác.
+ * Bảng màu Cáo Đưa Thư: cam lông cáo + giấy thư kem + nâu mực ấm.
+ */
+:root {
+  /* ---- Màu thương hiệu (cam cáo) ---- */
+  --color-primary: #E2631F;
+  --color-primary-600: #C7511A;
+  --color-primary-700: #9C3E12;
+  --color-primary-100: #FDE9DB;
+  --color-primary-50: #FFF5EE;
+
+  /* ---- Màu nhấn phụ (tem thư / dấu sáp) ---- */
+  --color-seal: #B8322A;
+  --color-stamp: #2E6F95;
+  --color-stamp-100: #E3F0F7;
+
+  /* ---- Trung tính ấm (giấy thư + mực nâu) ---- */
+  --color-white: #FFFFFF;
+  --color-paper: #FFFDF8;
+  --color-bg: #FFF9F2;
+  --color-bg-soft: #F8EEE2;
+  --color-ink-900: #2B1D17;
+  --color-ink-700: #4A362B;
+  --color-ink-600: #6F5A4D;
+  --color-ink-400: #A08E80;
+  --color-line: #EFE3D6;
+  --color-line-strong: #E2D1BF;
+
+  /* ---- Trạng thái ---- */
+  --color-success: #1F9254;
+  --color-success-bg: #EAF7EF;
+  --color-warning: #B86E0C;
+  --color-warning-bg: #FBF1E1;
+  --color-danger: #C42B3A;
+  --color-danger-bg: #FDECEE;
+  --color-info: #2563EB;
+  --color-info-bg: #EAF0FE;
+
+  /* ---- Typography ---- */
+  --font-display: 'Baloo 2', 'Be Vietnam Pro', 'Segoe UI', sans-serif;
+  --font-body: 'Be Vietnam Pro', 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+  --font-hand: 'Patrick Hand', 'Be Vietnam Pro', 'Segoe UI', cursive;
+
+  /* ---- Bo góc ---- */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* ---- Đổ bóng (nâu ấm) ---- */
+  --shadow-sm: 0 2px 8px rgba(74, 40, 20, 0.06);
+  --shadow-md: 0 8px 24px rgba(74, 40, 20, 0.1);
+  --shadow-lg: 0 16px 40px rgba(74, 40, 20, 0.16);
+
+  /* ---- Khoảng cách (spacing scale) ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* ---- Khác ---- */
+  --container-width: 1180px;
+  --header-height: 72px;
+  --transition-fast: 160ms ease;
+  --transition-base: 240ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Điện thoại: header thấp hơn để dành chỗ cho nội dung */
+@media (max-width: 640px) {
+  :root { --header-height: 60px; }
+}
