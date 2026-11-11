@@ -4,6 +4,12 @@
 [build]
   publish = "."
 
+# FIREBASE_PROJECT_ID không phải bí mật: nó buộc phải trùng projectId công khai trong
+# config/firebaseClient.js (Firebase Web SDK), nên bộ quét secrets của Netlify báo nhầm.
+# Chỉ bỏ qua khóa này; FIREBASE_PRIVATE_KEY và FIREBASE_CLIENT_EMAIL vẫn được quét.
+[build.environment]
+  SECRETS_SCAN_OMIT_KEYS = "FIREBASE_PROJECT_ID"
+
 # Netlify Functions (ES Module, không cần build, không cần npm install).
 # Endpoint kiểm tra TikTok: /.netlify/functions/check-tiktok
 [functions]
